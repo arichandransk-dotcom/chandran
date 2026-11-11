@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internship Report - Arichandran S</title>
+    <style>
+        /* General Styles */
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "Times New Roman", Times, serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 20px 0;
+            color: #000;
+        }
+
+        /* Page Layout for Web Display */
+        .report-container {
+            width: 210mm;
+            margin: 0 auto;
+        }
+        .page {
+            width: 210mm;
+            height: 297mm;
+            background: #fff;
+            padding: 20mm 15mm;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* Double Page Border */
+        .page-border {
+            border: 4px double #000;
+            width: 100%;
+            height: 100%;
+            padding: 20px 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        /* Page Numbering */
+        .page-number {
+            text-align: center;
+            font-size: 12pt;
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Typography & Headings */
+        h1, h2, h3, h4 {
+            text-align: center;
+            margin-top: 0;
+            color: #000;
+            font-weight: bold;
+        }
+        h1 {
+            font-size: 18pt;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+        h2 {
+            font-size: 16pt;
+            margin-bottom: 15px;
+        }
+        h3 {
+            font-size: 14pt;
+            margin-bottom: 10px;
+        }
+        p {
+            font-size: 12pt;
+            line-height: 1.6;
+            text-align: justify;
+            margin-bottom: 15px;
+            text-indent: 40px;
+        }
+        p.no-indent {
+            text-indent: 0;
+        }
+
+        /* Cover Page Specifics */
+        .cover-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        .cover-header-logo {
+            width: 60px;
+            height: 60px;
+            border: 2px solid #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 10pt;
+            border-radius: 5px;
+            background: #fcfcfc;
+        }
+        .cover-header-text {
+            text-align: center;
+        }
+        .cover-college {
+            font-size: 16pt;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        .cover-sub {
+            font-size: 11pt;
+            font-style: italic;
+        }
+        .cover-department {
+            font-size: 13pt;
+            font-weight: bold;
+            margin-top: 15px;
+            text-transform: uppercase;
+        }
+        .cover-middle-logo {
+            width: 140px;
+            height: 140px;
+            margin: 40px auto;
+            border: 2px dashed #666;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 11pt;
+            font-weight: bold;
+            color: #666;
+        }
+        .cover-title-box {
+            border: 2px solid #000;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+            border-radius: 8px;
+            background-color: #fafafa;
+        }
+        .cover-title {
+            font-size: 16pt;
+            font-weight: bold;
+            margin: 0 0 10px 0;
+        }
+        .cover-company {
+            font-size: 13pt;
+            font-weight: bold;
+        }
+        .cover-details {
+            text-align: center;
+            font-size: 13pt;
+            font-weight: bold;
+            margin-top: auto;
+            line-height: 1.8;
+        }
+
+        /* Certificate Elements */
+        .cert-fields {
+            margin: 40px auto;
+            border: 2px solid #000;
+            padding: 25px;
+            border-radius: 8px;
+            width: 90%;
+            line-height: 2.2;
+            font-size: 12pt;
+        }
+        .cert-field-line {
+            display: flex;
+            justify-content: flex-start;
+        }
+        .cert-field-label {
+            font-weight: bold;
+            width: 150px;
+        }
+        .cert-signatures {
+            display: flex;
+            justify-content: space-between;
+            margin-top: auto;
+            padding: 0 20px 40px 20px;
+            font-weight: bold;
+            font-size: 12pt;
+        }
+
+        /* Index Table */
+        .report-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            font-size: 12pt;
+        }
+        .report-table th, .report-table td {
+            border: 1px solid #000;
+            padding: 12px;
+            text-align: center;
+        }
+        .report-table th {
+            font-weight: bold;
+            background-color: #f5f5f5;
+        }
+        .report-table td.text-left {
+            text-align: left;
+            padding-left: 20px;
+        }
+
+        /* Screenshots styling */
+        .screenshot-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+            height: 80%;
+        }
+        .screenshot-item {
+            width: 90%;
+            border: 1px solid #000;
+            padding: 5px;
+            background: #fff;
+        }
+        .screenshot-item img {
+            width: 100%;
+            max-height: 180px;
+            object-fit: contain;
+            display: block;
+        }
+        .screenshot-caption {
+            font-size: 10pt;
+            font-style: italic;
+            text-align: center;
+            margin-top: 4px;
+            font-weight: bold;
+        }
+
+        /* Learning Objectives List */
+        .objective-list {
+            padding-left: 20px;
+            margin-bottom: 20px;
+            font-size: 12pt;
+            line-height: 1.6;
+        }
+        .objective-list li {
+            margin-bottom: 10px;
+            text-align: justify;
+        }
+
+        /* Company Certificate Styling */
+        .comp-cert {
+            border: 3px double #000;
+            padding: 25px;
+            margin: 20px 0;
+            background: #fff;
+            position: relative;
+        }
+        .comp-cert-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #000;
+            padding-bottom: 10px;
+        }
+        .comp-cert-title {
+            text-align: center;
+            font-size: 16pt;
+            font-weight: bold;
+            margin: 20px 0;
+            text-decoration: underline;
+        }
+
+        /* Day-to-Day table height adjustments */
+        .activities-table td {
+            padding: 8px;
+            font-size: 11pt;
+        }
+
+        /* Print Media Queries */
+        @media print {
+            body {
+                background-color: #fff;
+                padding: 0;
+                margin: 0;
+            }
+            .report-container {
+                width: 100%;
+                margin: 0;
+            }
+            .page {
+                width: 210mm;
+                height: 297mm;
+                margin: 0;
+                padding: 15mm 10mm;
+                box-shadow: none;
+                page-break-after: always;
+                break-after: page;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .page-border {
+                border: 4px double #000;
+                width: 100%;
+                height: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="report-container">
+
+    <!-- PAGE 1: COVER PAGE -->
+    <div class="page" id="page-1">
+        <div class="page-border">
+            <div class="cover-header">
+                <div class="cover-header-logo">KPRCAS</div>
+                <div class="cover-header-text">
+                    <div class="cover-college">KPR College of Arts Science and Research</div>
+                    <div class="cover-sub">(Affiliated to Bharathiar University, Coimbatore) Avinashi Road, Arasur, Coimbatore - 641 407</div>
+                </div>
+            </div>
+            
+            <h2>School of Computing Science</h2>
+            <h3>Department of Information Technology</h3>
+            
+            <div class="cover-middle-logo">
+                <div style="text-align:center;">
+                    <span style="font-size: 28pt; display:block; margin-bottom: 5px;">KPR</span>
+                    Learn Beyond
+                </div>
+            </div>
+            
+            <div class="cover-title-box">
+                <div class="cover-title">INTERNSHIP REPORT</div>
+                <div class="cover-company">APP INNOVATION TECHNOLOGIES PVT LTD</div>
+            </div>
+            
+            <div class="cover-details">
+                BACHELOR OF SCIENCE<br>
+                BATCH [2024-2027]<br><br>
+                ACADEMIC YEAR<br>
+                2026-2027
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE 2: COLLEGE CERTIFICATE -->
+    <div class="page" id="page-2">
+        <div class="page-border">
+            <div class="cover-header">
+                <div class="cover-header-text">
+                    <div class="cover-college">KPR College of Arts Science and Research</div>
+                    <div class="cover-sub">(Affiliated to Bharathiar University)</div>
+                </div>
+            </div>
+
+            <div class="cover-middle-logo" style="margin: 20px auto; width: 100px; height: 100px;">
+                <div style="text-align:center; font-size:9pt;">KPR Logo</div>
+            </div>
+
+            <div class="cert-fields">
+                <div class="cert-field-line">
+                    <div class="cert-field-label">Register Number:</div>
+                    <div>24BIT009</div>
+                </div>
+                <div class="cert-field-line">
+                    <div class="cert-field-label">Name:</div>
+                    <div>mr.Arichandran S</div>
+                </div>
+                <div class="cert-field-line">
+                    <div class="cert-field-label">Domain Name:</div>
+                    <div>Flutter Mobile Development</div>
+                </div>
+            </div>
+
+            <h2>CERTIFICATE</h2>
+            <p class="no-indent" style="text-align: center; font-size: 13pt; padding: 0 20px; line-height: 1.8;">
+                Certified that this is an internship work done by the above student during the academic year 2026-2027
+            </p>
+
+            <div class="cert-signatures">
+                <div>Internship Supervisor</div>
+                <div>Head of the Department</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE 3: INDEX -->
+    <div class="page" id="page-3">
+        <div class="page-border">
+            <h2>INDEX</h2>
+            <table class="report-table">
+                <thead>
+                    <tr>
+                        <th style="width: 15%;">S.NO</th>
+                        <th style="width: 65%;">CONTENT</th>
+                        <th style="width: 20%;">PAGE NO</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1.</td>
+                        <td class="text-left">Abstract</td>
+                        <td>01</td>
+                    </tr>
+                    <tr>
+                        <td>2.</td>
+                        <td class="text-left">Company Certificate</td>
+                        <td>02</td>
+                    </tr>
+                    <tr>
+                        <td>3.</td>
+                        <td class="text-left">About the Company</td>
+                        <td>03</td>
+                    </tr>
+                    <tr>
+                        <td>4.</td>
+                        <td class="text-left">Introduction</td>
+                        <td>04</td>
+                    </tr>
+                    <tr>
+                        <td>5.</td>
+                        <td class="text-left">Learning Objective</td>
+                        <td>05</td>
+                    </tr>
+                    <tr>
+                        <td>6.</td>
+                        <td class="text-left">Outcome of the Internship</td>
+                        <td>07</td>
+                    </tr>
+                    <tr>
+                        <td>7.</td>
+                        <td class="text-left">Conclusion</td>
+                        <td>08</td>
+                    </tr>
+                    <tr>
+                        <td>8.</td>
+                        <td class="text-left">Day to Day Activities</td>
+                        <td>09</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div style="margin-top: auto;"></div>
+        </div>
+    </div>
+
+    <!-- PAGE 4: ABSTRACT -->
+    <div class="page" id="page-4">
+        <div class="page-border">
+            <h2>ABSTRACT</h2>
+            <div style="font-weight: bold; font-size: 12pt; margin-bottom: 20px; text-align: center;">
+                Project Title : IronGear Store – A Fitness Supplement E-Commerce Application
+            </div>
+            <p>
+                <strong>IronGear Store</strong> is a cross-platform mobile application developed to simplify the process of discovering, ordering, and purchasing premium sports supplements and fitness products online. The project was designed and implemented during the internship to address the lack of direct, verified, and authenticated channels for fitness enthusiasts to procure nutritional products. By leveraging modern mobile development tools, the application offers a secure, intuitive, and highly responsive user experience across multiple devices.
+            </p>
+            <p>
+                The application frontend is engineered using the <strong>Flutter SDK</strong> and the <strong>Dart programming language</strong>, utilizing the <strong>Provider pattern</strong> for efficient application state management and reactive data updates. For local session cache and user preferences, <strong>SharedPreferences</strong> is implemented. To ensure continuous operation, a local JSON database fallback (<strong>local_db.json</strong>) is designed as a zero-downtime cache mechanism when network availability is interrupted. The application communicates with a backend RESTful API built on <strong>Node.js</strong> and <strong>Express</strong>, enabling smooth data transfer. Secure payment workflows are handled using deep-linking for mobile UPI applications with UTR verification for anti-fraud measures.
+            </p>
+            <p>
+                During the internship, the system design was optimized for visual excellence and ease of navigation. Core modules developed include a dynamic product catalog, detailed product view with interactive metrics (servings, ingredients, and lab test verifications), a cart system, user profile dashboard, and role-based administration panels. The overall project demonstrates how modern cross-platform mobile frameworks and secure backend services can be combined to build a scalable, secure, and user-centric retail solution.
+            </p>
+            <div class="page-number">1</div>
+        </div>
+    </div>
+
+    <!-- PAGE 5: COMPANY CERTIFICATE -->
+    <div class="page" id="page-5">
+        <div class="page-border">
+            <h2>CERTIFICATE</h2>
+            
+            <div class="comp-cert">
+                <div class="comp-cert-header">
+                    <div>
+                        <strong style="font-size: 14pt; color: #b22222;">AITech Academy</strong><br>
+                        <span style="font-size: 8pt; color: #555;">App Innovation Technologies</span>
+                    </div>
+                    <div style="text-align: right;">
+                        <strong>App Innovation Foundation</strong>
+                    </div>
+                </div>
+
+                <div style="text-align: right; font-size: 11pt; margin-bottom: 20px;">
+                    <strong>Date: 15<sup>th</sup> July 2026</strong>
+                </div>
+
+                <div class="comp-cert-title">INTERNSHIP COMPLETION CERTIFICATE</div>
+
+                <p class="no-indent" style="font-size: 12pt; line-height: 1.8; text-align: justify; text-indent: 0;">
+                    This is to certify that <strong>mr.Arichandran S (Reg No:24BIT009)</strong>, a student of <strong>B.Sc. IT</strong> from <strong>KPR College of Arts Science and Research - Coimbatore</strong>, has successfully completed an internship in the <strong>Flutter Mobile Application Development</strong> domain from <strong>22<sup>nd</sup> June 2026 to 15<sup>th</sup> July 2026</strong> at our organization.
+                </p>
+                <p class="no-indent" style="font-size: 12pt; line-height: 1.8; text-align: justify; text-indent: 0; margin-top: 15px;">
+                    During this period, he worked in the development field and demonstrated a high level of professionalism, dedication, and skill in his role as a <strong>Flutter Application Development - Intern</strong>. Throughout the internship period, he maintained a high standard of conduct.
+                </p>
+
+                <div style="margin-top: 40px; display: flex; justify-content: space-between; align-items: flex-end; padding: 0 10px;">
+                    <div style="border: 1px solid #ddd; padding: 10px; border-radius: 5px; font-size: 8pt; color: #555;">
+                        App Innovation Foundation<br>
+                        CIN: U85499TZ2024NPL030365
+                    </div>
+                    <div style="text-align: center; width: 100px;">
+                        <div style="font-style: italic; border-bottom: 1px solid #000; height: 30px;">Signature</div>
+                        <div style="font-size: 10pt; font-weight: bold; margin-top: 5px;">Director</div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="font-size: 9pt; color: #555; text-align: center; border-top: 1px solid #ddd; padding-top: 10px; margin-top: auto;">
+                <strong>Registered Office:</strong> LVA Tower, 1A7, 3rd Floor Mettupalayam Road, Vellakinaru, Coimbatore - 641 029<br>
+                Ph: 7708463081 | Website: www.aitechacademy.org | Email: info@aitechacademy.org
+            </div>
+            <div class="page-number">2</div>
+        </div>
+    </div>
+
+    <!-- PAGE 6: ABOUT THE COMPANY -->
+    <div class="page" id="page-6">
+        <div class="page-border">
+            <h2>ABOUT THE COMPANY</h2>
+            <p>
+                <strong>AI Tech Academy</strong> is a technology training institute powered by <strong>App Innovation Technologies Pvt Ltd</strong>, located in Coimbatore. The institute focuses on providing quality technical education and practical training to students who want to build careers in the technology industry. AI Tech aims to transform students’ aspirations into achievements by offering industry-oriented courses, experienced instructors, and hands-on learning opportunities. The academy helps students gain practical knowledge in areas such as software development, data analysis, and emerging technologies.
+            </p>
+            <p>
+                The parent company, <strong>App Innovation Technologies Pvt Ltd</strong>, is a software services firm that provides mobile and web-based development solutions to clients around the world. The company combines technical expertise and business intelligence to deliver innovative digital solutions, including mobile applications, websites, and enterprise web applications. Through its training programs and internship opportunities, AI Tech helps students gain real-world experience, understands software engineering principles, and prepares them for careers in the IT industry.
+            </p>
+            <p>
+                During the training, the institute emphasizes industry-level practices including Git workflows, agile methodologies, clean architecture, frontend engineering, database structures, and backend service integration, bridging the gap between theoretical academic studies and actual professional software product development.
+            </p>
+            <div class="page-number">3</div>
+        </div>
+    </div>
+
+    <!-- PAGE 7: INTRODUCTION -->
+    <div class="page" id="page-7">
+        <div class="page-border">
+            <h2>INTRODUCTION</h2>
+            <div style="font-weight: bold; font-size: 13pt; margin-bottom: 20px; text-align: center; text-transform: uppercase;">
+                FITNESS SUPPLEMENT APP
+            </div>
+            <p>
+                <strong>IronGear Store</strong> is a modern mobile e-commerce application developed during the internship with the objective of simplifying the purchase and procurement of verified, premium fitness supplements for gym goers, athletes, and fitness enthusiasts. The application provides a user-friendly platform where users can explore available products, check key nutritional details (such as servings, lab verification status, and brand information), manage items in a shopping cart, and initiate secure checkout. This mobile approach minimizes administrative overhead, provides immediate product tracking, and ensures supplement purity and quality.
+            </p>
+            <p>
+                The project was developed using the <strong>Flutter SDK</strong> and <strong>Dart</strong> for a responsive, cross-platform frontend client, combined with a <strong>Node.js and Express</strong> backend. The application utilizes the <strong>Provider pattern</strong> for state management, <strong>SharedPreferences</strong> for local user sessions, and utilizes a local <strong>JSON database fallback</strong> for offline operations. The backend handles API routes to fetch catalogs, verify checkout details, and confirm payments, providing a secure, end-to-end e-commerce flow.
+            </p>
+            <p>
+                The development of IronGear Store provided practical exposure to modern software engineering practices, including mobile UI styling, component modularization, state propagation, data persistence, network communication, and error handling. This internship project not only strengthened technical programming capabilities in Flutter and Node.js but also enhanced analytical problem-solving, code debugging, and project architecture design.
+            </p>
+            <div class="page-number">4</div>
+        </div>
+    </div>
+
+    <!-- PAGE 8: LEARNING OBJECTIVE -->
+    <div class="page" id="page-8">
+        <div class="page-border">
+            <h2>LEARNING OBJECTIVE</h2>
+            <ol class="objective-list">
+                <li>To understand the fundamentals of Flutter Cross-Platform Development and Mobile Architecture.</li>
+                <li>To gain knowledge of Dart programming language and asynchronous coding patterns.</li>
+                <li>To learn how to manage application state reactively using the Provider pattern in Flutter.</li>
+                <li>To develop interactive, responsive, and visually appealing mobile user interfaces.</li>
+                <li>To understand local storage caching and user session state using SharedPreferences.</li>
+                <li>To master the integration of RESTful APIs with Flutter using HTTP network requests.</li>
+                <li>To understand the importance of adaptive mobile layouts for different screen dimensions.</li>
+                <li>To gain experience in debugging mobile rendering errors and state synchronization bugs.</li>
+                <li>To improve logical thinking and analytical problem-solving in code design.</li>
+                <li>To understand software design workflows, folder structuring, and asset management in Flutter.</li>
+                <li>To learn how to parse local JSON databases and handle cache-fallback (zero-downtime) design.</li>
+                <li>To enhance technical communication, documentation, and collaboration within a development team.</li>
+                <li>To build confidence in developing real-world, commercial mobile e-commerce applications.</li>
+                <li>To understand industry practices, mobile security measures, and version control workflows.</li>
+            </ol>
+            <div class="page-number">5</div>
+        </div>
+    </div>
+
+    <!-- PAGE 9: WEBSITE IMAGES -->
+    <div class="page" id="page-9">
+        <div class="page-border">
+            <h2>WEBSITE IMAGES</h2>
+            <div class="screenshot-container">
+                <div class="screenshot-item">
+                    <img src="assets/screenshot1.png" alt="IronGear Store Home Hero">
+                    <div class="screenshot-caption">Figure 6.1: IronGear Store Home Screen & Lab-Tested Compound Banner</div>
+                </div>
+                <div class="screenshot-item">
+                    <img src="assets/screenshot2.png" alt="IronGear Store Navigation">
+                    <div class="screenshot-caption">Figure 6.2: Header Navigation Layout with Active User Session Profile</div>
+                </div>
+                <div class="screenshot-item">
+                    <img src="assets/screenshot3.png" alt="IronGear Partner Brands Grid">
+                    <div class="screenshot-caption">Figure 6.3: Partner Brands Catalog and Product Grid Showcase</div>
+                </div>
+            </div>
+            <div class="page-number">6</div>
+        </div>
+    </div>
+
+    <!-- PAGE 10: OUTCOME OF THE INTERNSHIP -->
+    <div class="page" id="page-10">
+        <div class="page-border">
+            <h2>OUTCOME OF THE INTERNSHIP</h2>
+            <p>
+                One of the major outcomes of the internship was the significant improvement in my front-end mobile development capabilities using Flutter. I learned how to style and structure mobile layout screens, build reusable widgets, organize asset directories, and create responsive designs that adapt to varying mobile viewport widths. I also understood the critical principles of visual hierarchy, navigation flows, and interactive components.
+            </p>
+            <p>
+                The internship also enhanced my knowledge of reactive programming in Dart. I learned how to implement the Provider pattern to decouple state management from UI logic, resulting in cleaner, maintainable, and testable code. Working with shared_preferences helped me understand how to persist key-value pairs (like user logins and settings) locally on the device.
+            </p>
+            <p>
+                On the backend integration side, I gained practical knowledge of HTTP protocols and JSON formatting. I understood how to send GET/POST requests from the mobile application, parse backend responses, and handle loading/error states in the UI. I was also introduced to parsing local JSON configuration files (`local_db.json`) to serve as an offline database when the internet is unavailable.
+            </p>
+            <p>
+                Another critical outcome was the development of industrial debugging and problem-solving skills. During the internship, I encountered layout overflows, asynchronous timing issues, and API mismatch errors, and learned to resolve them using logs and developer tools. This has built my confidence in resolving complex programming hurdles.
+            </p>
+            <div class="page-number">7</div>
+        </div>
+    </div>
+
+    <!-- PAGE 11: CONCLUSION -->
+    <div class="page" id="page-11">
+        <div class="page-border">
+            <h2>CONCLUSION</h2>
+            <p>
+                The Flutter Mobile App Development internship at <strong>App Innovation Technologies Pvt Ltd</strong> provided valuable practical experience in modern mobile software engineering. During the internship, comprehensive knowledge was gained in frontend mobile UI design using Flutter and Dart, state management using Provider, backend integration using HTTP, and offline database fallback design.
+            </p>
+            <p>
+                The internship bridged the gap between academic learning and industry standards, significantly improving technical capabilities, debugging workflows, and problem-solving skills. Overall, the internship was a highly productive learning experience and has provided a solid foundation that will support my future career growth in the software development industry.
+            </p>
+            <div style="margin-top: auto;"></div>
+            <div class="page-number">8</div>
+        </div>
+    </div>
+
+    <!-- PAGE 12: DAY TO DAY ACTIVITIES -->
+    <div class="page" id="page-12" style="height: auto; min-height: 297mm;">
+        <div class="page-border">
+            <h2>DAY TO DAY ACTIVITIES</h2>
+            <table class="report-table activities-table">
+                <thead>
+                    <tr>
+                        <th style="width: 15%;">DATE</th>
+                        <th style="width: 15%;">DAY</th>
+                        <th style="width: 70%;">MODULE COMPLETED</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>22-06-2026</td>
+                        <td>Monday</td>
+                        <td class="text-left">Introduction to Flutter SDK, Dart Basics, and Environment Setup.</td>
+                    </tr>
+                    <tr>
+                        <td>23-06-2026</td>
+                        <td>Tuesday</td>
+                        <td class="text-left">Designing UI layouts, Widgets (Stateless & Stateful), and Navigation.</td>
+                    </tr>
+                    <tr>
+                        <td>24-06-2026</td>
+                        <td>Wednesday</td>
+                        <td class="text-left">Implementing custom layouts and styling using Google Fonts.</td>
+                    </tr>
+                    <tr>
+                        <td>25-06-2026</td>
+                        <td>Thursday</td>
+                        <td class="text-left">Introduction to State Management and utilizing the Provider package.</td>
+                    </tr>
+                    <tr>
+                        <td>26-06-2026</td>
+                        <td>Friday</td>
+                        <td class="text-left">Implementing local data storage and caching with SharedPreferences.</td>
+                    </tr>
+                    <tr>
+                        <td>27-06-2026</td>
+                        <td>Saturday</td>
+                        <td class="text-left">Setting up the mock local JSON database (local_db.json) structure.</td>
+                    </tr>
+                    <tr>
+                        <td>29-06-2026</td>
+                        <td>Monday</td>
+                        <td class="text-left">Integrating Lucide Icons and refining the User Interface design.</td>
+                    </tr>
+                    <tr>
+                        <td>30-06-2026</td>
+                        <td>Tuesday</td>
+                        <td class="text-left">Practice coding UI screens (Login, Product Catalog, Product Detail).</td>
+                    </tr>
+                    <tr>
+                        <td>01-07-2026</td>
+                        <td>Wednesday</td>
+                        <td class="text-left">Creating RESTful API endpoints and setting up the backend structure.</td>
+                    </tr>
+                    <tr>
+                        <td>02-07-2026</td>
+                        <td>Thursday</td>
+                        <td class="text-left">Integrating network requests (http package) to fetch product data.</td>
+                    </tr>
+                    <tr>
+                        <td>03-07-2026</td>
+                        <td>Friday</td>
+                        <td class="text-left">Implementing user authentication and secure token storage in SharedPreferences.</td>
+                    </tr>
+                    <tr>
+                        <td>04-07-2026</td>
+                        <td>Saturday</td>
+                        <td class="text-left">Testing network connectivity and offline cache fallback mechanisms.</td>
+                    </tr>
+                    <tr>
+                        <td>06-07-2026</td>
+                        <td>Monday</td>
+                        <td class="text-left">Implementing checkout and mock UPI payment redirection using url_launcher.</td>
+                    </tr>
+                    <tr>
+                        <td>07-07-2026</td>
+                        <td>Tuesday</td>
+                        <td class="text-left">Debugging application issues, memory leaks, and performance optimization.</td>
+                    </tr>
+                    <tr>
+                        <td>08-07-2026</td>
+                        <td>Wednesday</td>
+                        <td class="text-left">Final presentation of the Flutter Fitness Supplement Store app.</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="page-number">9</div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
